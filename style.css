@@ -1,0 +1,294 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --success: #22c55e;
+    --error: #ef4444;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+   margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Cấu hình hình nền */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('background1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    
+    /* Quan trọng: Đảm bảo nội dung không bị đẩy ra ngoài */
+    overflow-x: hidden;
+}
+
+.container { 
+    width: 100%; 
+    max-width: 550px; 
+}
+
+.card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+/* Quan trọng: Class ẩn phần tử */
+.hidden { 
+    display: none !important; 
+}
+
+/* Style cho màn hình bắt đầu */
+.start-card {
+    text-align: center;
+}
+
+.mode-selection {
+    display: grid;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-mode {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-mode:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* Bộ đếm giờ cố định ở góc */
+#timer-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--error);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    z-index: 1000;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Thanh tiến trình */
+.progress-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.badge, .score-badge {
+    background: #eef2ff;
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.question {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Grid các phương án */
+.options-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.option-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 14px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--primary);
+    background: #f5f3ff;
+}
+
+.option-btn:disabled {
+    cursor: default;
+}
+
+/* Trạng thái đúng/sai */
+.correct {
+    background-color: var(--success) !important;
+    color: white !important;
+    border-color: var(--success) !important;
+}
+
+.wrong {
+    background-color: var(--error) !important;
+    color: white !important;
+    border-color: var(--error) !important;
+}
+
+/* Màn hình kết quả */
+#result-card {
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.score-display {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 15px 0;
+}
+
+.btn-retry {
+    background: var(--text);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.btn-retry:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* --- SỬA LỖI MÃ QR TO VÀ CHE CHỮ (THAY THẾ ĐOẠN CŨ) --- */
+
+/* Khung chứa ở góc phải dưới */
+.donate-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Đảm bảo nằm trên hình nền */
+    text-align: right; /* Căn nút Donate sang phải */
+    
+    /* QUAN TRỌNG: Giúp click xuyên qua các vùng trống */
+    pointer-events: none; 
+}
+
+/* Cái bảng QR luôn hiện */
+.donate-popup {
+    background: rgba(0, 0, 0, 0.85); /* Nền đen mờ giúp chữ trắng nổi bật */
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    width: 150px; /* Ép độ rộng cái bảng nhỏ lại */
+    
+    /* SỬA TẠI ĐÂY: Nằm cố định, không nhảy ra giữa */
+    position: absolute;
+    bottom: 60px; /* Nằm phía trên nút Donate một khoảng */
+    right: 0;
+    
+    /* SỬA TẠI ĐÂY: Thay 'none' thành 'block' để luôn hiện */
+    display: block !important; 
+    
+    z-index: 10000;
+    
+    /* Cho phép click vào đúng cái bảng */
+    pointer-events: auto; 
+}
+
+/* ĐỔI MÀU CHỮ SANG TRẮNG VÀ CỰC RÕ */
+.donate-popup p {
+    color: #ffffff !important; 
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 12px; /* Chữ nhỏ lại cho gọn */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Thêm bóng cho chữ */
+}
+
+/* CHỈNH ẢNH QR CHO GỌN NHẤT */
+.donate-popup img {
+    /* SỬA TẠI ĐÂY: Đặt kích thước ảnh cố định và nhỏ hơn */
+    width: 120px !important; 
+    height: 120px !important;
+    
+    border-radius: 8px;
+    border: 3px solid white; /* Thêm viền trắng dày cho QR đẹp và dễ quét */
+    background: white;
+    margin: 5px 0;
+}
+
+/* Nút Donate bên dưới */
+.donate-btn {
+    background-color: #5d5fef; /* Màu tím cho đồng bộ giao diện */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    /* Cho phép click vào nút */
+    pointer-events: auto; 
+}
+.donate-popup {
+    /* ... các code khác ... */
+    display: block; /* Bỏ !important đi để JavaScript có thể ghi đè được */
+}

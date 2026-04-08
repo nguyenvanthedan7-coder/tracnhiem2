@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Trắc Nghiệm Đường Lối Quân Sự</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="start-screen" class="container">
+        <div class="card start-card">
+            <div class="result-icon">🎖️</div>
+            <h1>Ôn thi Đường lối Quân sự</h1>
+            <p>Vui lòng chọn học phần để bắt đầu thi</p>
+            <div class="mode-selection">
+                <button onclick="startQuiz(1)" class="btn-mode">Học phần 1</button>
+                <button onclick="startQuiz(2)" class="btn-mode">Học phần 2</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="timer-container" class="hidden">
+        Thời gian còn lại: <span id="timer-count">20:00</span>
+    </div>
+
+    <div class="container">
+        <div id="quiz-card" class="card hidden">
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            
+            <div class="quiz-header">
+                <span class="badge">Câu hỏi <span id="current-number">1</span>/20</span>
+                <div class="score-badge">0.5đ / câu</div>
+            </div>
+
+            <h2 id="question-text" class="question">Đang tải câu hỏi...</h2>
+
+            <div id="options-container" class="options-grid">
+                </div>
+        </div>
+
+        <div id="result-card" class="card hidden">
+            <div class="result-icon">🏆</div>
+            <h2>Hoàn thành bài thi!</h2>
+            <div class="score-display">
+                <span id="final-score">0.0</span>
+                <small>/ 10 điểm</small>
+            </div>
+            <button onclick="location.reload()" class="btn-retry">Làm lại bài mới</button>
+        </div>
+    </div>
+
+   <div class="donate-container">
+    <div class="donate-popup">
+        <p>Cảm ơn bạn đã ủng hộ! ☕</p>
+        <img src="myqr.jpg" alt="QR Donate">
+        <p style="font-size: 12px;">web có thể còn có lỗi nên mong các bạn góp ý ạ </p>
+    </div>
+    <button class="donate-btn">
+        💰 Donate
+    </button>
+</div>
+<script src="script.js"></script>
+</body>
+</body>
+</html>
